@@ -1,5 +1,5 @@
 from django import template
-from quxisto.nadb.models import Category, Post
+from nadb.models import Category, Post
 import re
 
 register = template.Library()
