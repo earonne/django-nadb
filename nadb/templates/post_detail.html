@@ -1,0 +1,31 @@
+{% extends "nadb/base_nadb.html" %}
+{% load markup %}
+{% load comments %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/code.css">
+{% endblock %}
+
+{% block body %}
+{% get_comment_count for object as comment_count %}
+<div class="content-pane">
+    <article>
+        <h2>{{ object.title }}</h2>
+        {{ object.body_html|safe }}
+        <ul class="postinfo">
+            <li>{{ comment_count }} comment{{ comment_count|pluralize }}</li>
+            <li><time itemprop="published" datetime="{{ object.published }}">{{ object.published|date:"F d, Y" }}</time></li>
+            <li>Posted by {{ object.author }}</li>
+        </ul>
+        {% ifnotequal comment_count 0 %}
+            {% render_comment_list for object %}
+        {% endifnotequal %}
+        {% with object.get_absolute_url as next %} 
+        {% render_comment_form for object %}
+        {% endwith %}
+    </article>
+    <div class="content-footer">&nbsp;</div>
+</div>
+{% endblock %}

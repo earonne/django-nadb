@@ -1,0 +1,36 @@
+{% extends "nadb/base_nadb.html" %}
+{% load markup %}
+
+{% block title %}Posts in {{ category.name }}{% endblock %}
+
+{% block body %}
+    <header>
+        <h2>Posts in category: {{ category.name }}</h2>
+    </header>
+    {% for post in object_list %}
+    <div class="content-pane">
+        <article>
+            <h2><a href="{{ post.get_absolute_url }}" title="View this post">{{ post.title }}</a></h2>
+            <p>{{ post.teaser }}</p>
+            <ul class="postinfo">
+                <li>{{ post.published|date:"F d, Y" }}</li>
+                <li>Posted by {{ post.author }}</li>
+                <li><a href="{{ post.get_absolute_url }}" title="View this post">Read full post</a></li>
+            </ul>
+        </article>
+        <div class="content-footer">&nbsp;</div>
+    </div>
+    {% endfor %}
+    
+    {% if is_paginated %}
+    <nav id="pagination">
+        <ul>
+            {% if has_next %}
+            <li><a class="older" href="?page={{ next }}" title="View older posts">Older</a></li>
+            {% endif %}
+            {% if has_previous %}
+            <li><a class="newer" href="?page={{ previous }}" title="View newer posts">Newer</a></li>
+            {% endif %}
+    </nav>
+    {% endif %}
+{% endblock %}
