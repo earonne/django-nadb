@@ -3,15 +3,12 @@
 {% block title %}Categories{% endblock %}
 
 {% block body %}
-<div class="content-pane">
-    <article>
-        <h2>Categories</h2>
-        <ul>
-            {% for cat in object_list %}
-            <li><a href="{% url category_list %}{{ cat.slug }}/" title="View items posted in this category">{{ cat.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </article>
-    <div class="content-footer">&nbsp;</div>
-</div>
+<article>
+    <h2>Categories</h2>
+    <ul>
+        {% for cat in object_list %}
+        <li><a href="{% url category_list %}{{ cat.slug }}/" title="View items posted in this category">{{ cat.name }}</a></li>
+        {% endfor %}
+    </ul>
+</article>
 {% endblock %}

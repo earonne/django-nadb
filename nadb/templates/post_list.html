@@ -1,21 +1,18 @@
 {% extends "nadb/base_nadb.html" %}
 
-{% block title %}Quxisto - a blog on technology and entrepreneurship{% endblock %}
+{% block title %}Blog posts{% endblock %}
 
 {% block body %}
     {% for post in object_list %}
-    <div class="content-pane">
-        <article>
-            <h2><a href="{{ post.get_absolute_url }}" title="View this post">{{ post.title }}</a></h2>
-            <p>{{ post.teaser }}</p>
-            <ul class="postinfo">
-                <li>{{ post.published|date:"F d, Y" }}</li>
-                <li>Posted by {{ post.author }}</li>
-                <li><a href="{{ post.get_absolute_url }}" title="View this post">Read full post</a></li>
-            </ul>
-        </article>
-        <div class="content-footer">&nbsp;</div>
-    </div>
+    <article>
+        <h2><a href="{{ post.get_absolute_url }}" title="View this post">{{ post.title }}</a></h2>
+        <p>{{ post.teaser }}</p>
+        <ul class="postinfo">
+            <li>{{ post.published|date:"F d, Y" }}</li>
+            <li>Posted by {{ post.author }}</li>
+            <li><a href="{{ post.get_absolute_url }}" title="View this post">Read full post</a></li>
+        </ul>
+    </article>
     {% endfor %}
     
     {% if is_paginated %}
