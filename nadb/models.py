@@ -1,3 +1,6 @@
+"""
+Models for nadb
+"""
 from django.db import models
 import datetime
 from django.db.models import permalink
@@ -11,6 +14,9 @@ STATUS_CHOICES = (
 )
 
 class Category(models.Model):
+    """
+    Category model for Posts
+    """
     name = models.CharField('name', max_length=100)
     slug = models.SlugField('slug', unique=True)
     description = models.TextField('description', blank=True)
@@ -29,6 +35,9 @@ class Category(models.Model):
         })
 
 class Post(models.Model):
+    """
+    Post model
+    """
     title = models.CharField('title', max_length=200)
     slug = models.SlugField('slug', unique_for_date='published')
     teaser = models.TextField('teaser')
@@ -44,6 +53,9 @@ class Post(models.Model):
     
     class Meta:
         ordering  = ('-published',)
+    
+    def __unicode__(self):
+        return u'%s' % self.title
         
     @permalink
     def get_absolute_url(self):
