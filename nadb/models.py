@@ -7,7 +7,9 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 from managers import PostManager
 from markdown import markdown
+from django_markup.markup import formatter
 import datetime
+import settings
 
 class Category(models.Model):
     """
@@ -67,5 +69,21 @@ class Post(models.Model):
         })
         
     def save(self):
-        self.body_html = markdown(self.body, ['codehilite'])
+        """
+        Apply a markup format to body and store the output in body_html.
+        Customize the markup filter settings in your settings.py
+        
+        NADB_MARKUP_FILTER = 'codehilite'
+        
+        MARKUP_SETTINGS = {
+            'markdown': {
+                'safe_mode': True,
+                'extensions': ['codehilite']
+            }
+        }
+                
+        """
+        filter_name = getattr(settings, 'NADB_MARKUP_FILTER', 'markdown')
+        self.body_html = formatter(self.body, filter_name=filter_name)
         super(Post, self).save()
+        
