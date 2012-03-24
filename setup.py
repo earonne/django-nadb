@@ -4,7 +4,7 @@ setup(name='nadb',
       version='0.1.1',
       license='BSD',
       
-      description='A Django blog app',
+      description='Not Another Django Blog app!',
       long_description=open('README.rst').read(),
       
       author='Daniel Aronne',
