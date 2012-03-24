@@ -26,7 +26,6 @@ under:
 
 """
 from django.conf.urls.defaults import patterns, include, url
-from feeds import PostFeed
 
 urlpatterns = patterns('nadb.views',
                        url(r'^(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{1,2})/(?P<slug>[-\w]+)/$', 

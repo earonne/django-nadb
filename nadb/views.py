@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from models import Post, Category
 
 def post_list(request, page=0, paginate_by=20,
-              template_name='blog/post_list.html',
+              template_name='nadb/post_list.html',
               extra_context=None,
               **kwargs):
     """
@@ -14,7 +14,7 @@ def post_list(request, page=0, paginate_by=20,
     
     **Template:**
     
-    blog/post_list.html or ``template_name`` keyword argument.
+    nadb/post_list.html or ``template_name`` keyword argument.
     
     **Template context:**
     
@@ -39,14 +39,15 @@ def post_list(request, page=0, paginate_by=20,
 
 
 def post_detail(request, year, month, day, slug,
-                template_name='blog/post_list.html',
-                extra_context=None):
+                template_name='nadb/post_detail.html',
+                extra_context=None,
+                **kwargs):
     """
     Display a blog post.
     
     **Template:**
     
-    blog/post_detail.html or ``template_name`` keyword argument.
+    nadb/post_detail.html or ``template_name`` keyword argument.
     
     **Template context:**
     
@@ -71,16 +72,15 @@ def post_detail(request, year, month, day, slug,
     
 def post_archive_year(request, year,
                       make_object_list=False,
-                      template_name='blog/post_archive_year.html',
+                      template_name='nadb/post_archive_year.html',
                       extra_context=None,
-                      make_object_list=False,
                       **kwargs):
     """
     Display a list of all months that have published blog posts in a given year. A list of all these blog posts can be included by making make_object_list=True.
     
     **Template:**
     
-    blog/post_archive_year.html or ``template_name`` keyword argument.
+    nadb/post_archive_year.html or ``template_name`` keyword argument.
     
     **Template context:**
     
@@ -108,19 +108,19 @@ def post_archive_year(request, year,
     )
     
 def post_archive_month(request, year, month,
-                       template_name='blog/post_archive_month.html',
+                       template_name='nadb/post_archive_month.html',
                        extra_context=None,
                        **kwargs):
-   """
-   Display a list of published blog posts in a given month.
-   
-   **Template:**
-   
-   blog/post_archive_month.html or ``template_name`` keyword argument.
-   
-   **Template context:**
-   
-   In addition to extra_context, the template's context will be:
+    """
+    Display a list of published blog posts in a given month.
+    
+    **Template:**
+    
+    nadb/post_archive_month.html or ``template_name`` keyword argument.
+    
+    **Template context:**
+    
+    In addition to extra_context, the template's context will be:
        
        ``date_list``
            A DateQuerySet object containing all days that have have objects available in the given month, represented as datetime.datetime objects, in ascending order.
@@ -137,7 +137,7 @@ def post_archive_month(request, year, month,
        ``object_list``
            A list of objects available for the given month. 
        
-   """
+    """
     return date_based.archive_month(
         request,
         year=year,
@@ -150,7 +150,7 @@ def post_archive_month(request, year, month,
     )
     
 def post_archive_day(request, year, month, day,
-                     template_name='blog/post_archive_day.html',
+                     template_name='nadb/post_archive_day.html',
                      extra_context=None,
                      **kwargs):
     """
@@ -158,7 +158,7 @@ def post_archive_day(request, year, month, day,
     
     **Template:**
     
-    blog/post_archive_day.html or ``template_name`` keyword argument.
+    nadb/post_archive_day.html or ``template_name`` keyword argument.
     
     **Template context:**
     
@@ -190,7 +190,7 @@ def post_archive_day(request, year, month, day,
     )
     
 def category_list(request, page=0, paginate_by=20,
-                  template_name='blog/category_list.html',
+                  template_name='nadb/category_list.html',
                   extra_context=None,
                   **kwargs):
     """
@@ -198,7 +198,7 @@ def category_list(request, page=0, paginate_by=20,
     
     **Template:**
     
-    blog/category_list.html or ``template_name`` keyword argument.
+    nadb/category_list.html or ``template_name`` keyword argument.
     
     **Template context:**
     
@@ -222,8 +222,7 @@ def category_list(request, page=0, paginate_by=20,
     )
 
 def category_detail(request, slug, 
-                    paginate_by=paginate_by,
-                    page=page,
+                    page=0, paginate_by=20,
                     template_name='nadb/category_detail.html',
                     extra_context=None,
                     **kwargs):
@@ -232,7 +231,7 @@ def category_detail(request, slug,
     
     **Template:**
     
-    blog/category_detail.html or ``template_name`` keyword argument.
+    nadb/category_detail.html or ``template_name`` keyword argument.
     
     **Template context:**
     

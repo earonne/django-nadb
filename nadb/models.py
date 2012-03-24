@@ -2,28 +2,24 @@
 Models for nadb
 """
 from django.db import models
-import datetime
 from django.db.models import permalink
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext as _
 from managers import PostManager
 from markdown import markdown
-
-STATUS_CHOICES = (
-    ('d', 'Draft'),
-    ('p', 'Published'),
-)
+import datetime
 
 class Category(models.Model):
     """
     Category model for Posts
     """
-    name = models.CharField('name', max_length=100)
-    slug = models.SlugField('slug', unique=True)
-    description = models.TextField('description', blank=True)
+    name = models.CharField(_('name'), max_length=100)
+    slug = models.SlugField(_('slug'), unique=True)
+    description = models.TextField(_('description'), blank=True)
     
     class Meta:
-        verbose_name = 'category'
-        verbose_name_plural = 'categories'
+        verbose_name = _('category')
+        verbose_name_plural = _('categories')
         
     def __unicode__(self):
         return u'%s' % self.name
@@ -38,16 +34,20 @@ class Post(models.Model):
     """
     Post model
     """
-    title = models.CharField('title', max_length=200)
-    slug = models.SlugField('slug', unique_for_date='published')
-    teaser = models.TextField('teaser')
-    body = models.TextField('body')
-    body_html = models.TextField(editable=False, blank=True, null=True)
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='d')
+    STATUS_CHOICES = (
+        ('d', _('Draft')),
+        ('p', _('Published')),
+    )
+    title = models.CharField(_('title'), max_length=200)
+    slug = models.SlugField(_('slug'), unique_for_date='published')
+    teaser = models.TextField(_('teaser'))
+    body = models.TextField(_('body'))
+    body_html = models.TextField(_('body_html'), editable=False, blank=True, null=True)
+    status = models.CharField(_('status'),max_length=1, choices=STATUS_CHOICES, default='d')
     author = models.ForeignKey(User, blank=True, null=True)
-    published = models.DateTimeField('published', default=datetime.datetime.now)
-    created = models.DateTimeField('created', auto_now_add=True)
-    modified = models.DateTimeField('modified', auto_now=True)
+    published = models.DateTimeField(_('published'), default=datetime.datetime.now)
+    created = models.DateTimeField(_('created'), auto_now_add=True)
+    modified = models.DateTimeField(_('modified'), auto_now=True)
     categories = models.ManyToManyField(Category, blank=True)
     objects = PostManager()
     
