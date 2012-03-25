@@ -8,3 +8,6 @@ local_settings.py
 *.esproj/
 static/
 dist/
+_templates/
+_static/
+_build/
