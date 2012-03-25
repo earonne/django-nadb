@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='nadb',
-      version='0.1.1',
+      version=__import__('nadb').get_version().replace(' ', '-'),
       license='BSD',
       
       description='Not Another Django Blog app!',
@@ -12,7 +12,7 @@ setup(name='nadb',
       url='https://github.com/earonne/nadb/',
       
       install_requires = [
-          'markdown',
+          'django-markup',
       ],
       
       packages=['nadb'],
