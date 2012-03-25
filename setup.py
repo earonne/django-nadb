@@ -9,13 +9,13 @@ setup(name='nadb',
       
       author='Daniel Aronne',
       author_email='earonne@quxisto.com',
-      url='https://github.com/earonne/nadb/',
+      url='https://github.com/earonne/django-nadb/',
       
       install_requires = [
           'django-markup',
       ],
       
-      packages=['nadb'],
+      packages=['django-nadb'],
       classifiers=['Development Status :: 3 - Alpha',
                    'Environment :: Web Environment',
                    'Intended Audience :: Developers',

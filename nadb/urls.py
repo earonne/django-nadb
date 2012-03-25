@@ -1,8 +1,8 @@
 """
-URL patterns for nadb.
+URL patterns for django-nadb.
 
 Simply use a line like this in your root URLConf to set up the default
-URLs for nadb:
+URLs for django-nadb:
 
     (r'^blog/', include('nadb.urls')),
 

@@ -1,5 +1,5 @@
 """
-Views for nadb
+Views for django-nadb
 """
 from django.views.generic import list_detail, date_based
 from django.shortcuts import get_object_or_404

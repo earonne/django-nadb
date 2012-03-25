@@ -1,34 +1,34 @@
-Welcome to nadb's documentation!
+Welcome to django-nadb's documentation!
 ================================
 
-nadb (Not Another Django Blog) is a Django blog app. The source repository can be found at https://github.com/earonne/nadb/
+django-nadb (Not Another Django Blog) is a Django blog app. The source repository can be found at https://github.com/earonne/django-nadb/
 
 Installation
 ============
 
-Installing nadb is as simple as checking out the source and adding it to your project or ``PYTHONPATH``.
+Installing django-nadb is as simple as checking out the source and adding it to your project or ``PYTHONPATH``.
 
-Use git, pip or easy_install to check out nadb from Github_ or get a release from PyPI_.
+Use git, pip or easy_install to check out django-nadb from Github_ or get a release from PyPI_.
 
 
 1. Download and install the package from the python package 
 index (PyPI_)::
 
-    easy_install nadb
+    easy_install django-nadb
 
 or if you prefer pip::
 
-    pip install nadb
+    pip install django-nadb
 
 
 2. Install the latest development version from GitHub_. This requires to install
 git_ of course::
 
-    git clone git://github.com/earonne/nadb.git
+    git clone git://github.com/earonne/django-nadb.git
 
 then install it manually::
 
-    cd nadb
+    cd django-nadb
     python setup.py install
 
 
@@ -42,17 +42,17 @@ Please note that the dev version is not fully tested and may contain bugs.
 Usage
 =============
 
-1. To install ``nadb`` just add the package to your ``INSTALLED_APPS``
+1. To install django-nadb just add the package to your ``INSTALLED_APPS``
 setting::
 
     # settings.py
     INSTALLED_APPS = (
         ...
         'nadb',
-        'django-markup',
+        'django_markup',
     )
     
-    # Notice you also need to add django-markup to your INSTALLED_APPS.
+    # Notice you also need to add django_markup to your INSTALLED_APPS.
 
 
 2. Run the syncdb 
@@ -62,7 +62,7 @@ command::
 
 
 3. Add a line like this in your root URLConf to set up the default URLs for 
-nadb::
+django-nadb::
 
     # urls.py
     urlpatterns = patterns('',
@@ -70,7 +70,7 @@ nadb::
     )
 
 
-4. ``nadb`` supports markup filters (e.g. Markdown, RestructuredText, etc.). 
+4. django-nadb supports markup filters (e.g. Markdown, RestructuredText, etc.). 
 Add the following to your ``settings.py``::
 
     # settings.py
