@@ -21,7 +21,7 @@ man_pages = [
 ]
 
 sys.path.insert(0, os.pardir)
-m = __import__(project)
+m = __import__('nadb')
 
 version = m.__version__
 release = version

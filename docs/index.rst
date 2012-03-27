@@ -1,5 +1,5 @@
 Welcome to django-nadb's documentation!
-================================
+=======================================
 
 django-nadb (Not Another Django Blog) is a Django blog app. The source repository can be found at https://github.com/earonne/django-nadb/
 
