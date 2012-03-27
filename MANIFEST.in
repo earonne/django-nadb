@@ -1,0 +1,5 @@
+recursive-include docs *
+recursive-include nadb/templates *.html
+include AUTHORS
+include LICENSE
+include README.rst
